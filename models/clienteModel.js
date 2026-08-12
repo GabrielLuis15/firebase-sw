@@ -1,7 +1,7 @@
 // model - banco de dados
 const db = require("../config/firebase");
 
-const ref = db.ref("categorias");
+const ref = db.ref("clientes");
 
 // =====================================================
 // LISTAR CATEGORIAS
@@ -15,7 +15,8 @@ async function listar() {
 
     return Object.keys(dados).map(id => ({
         id,
-        nome: dados[id].nome
+        nome: dados[id].nome,
+        email: dados[id].email
     }));
 }
 
@@ -23,18 +24,21 @@ async function listar() {
 // =====================================================
 // CADASTRAR NOVA CATEGORIA
 // =====================================================
-async function salvar(categoria) {
+async function salvar(cliente) {
 
     // Cria um ID automático do Firebase
-    const novaCategoria = ref.push();
+    const novoCliente = ref.push();
 
-    await novaCategoria.set({
-        nome: categoria.nome
+    await novoCliente.set({
+        nome: cliente.nome,
+        email: cliente.email
+
     });
 
     return {
-        id: novaCategoria.key,
-        nome: categoria.nome
+        id: novoCliente.key,
+        nome: cliente.nome,
+        email: cliente.email
     };
 }
 
@@ -52,7 +56,8 @@ async function buscarPorId(id) {
 
     return {
         id: registro.key,
-        nome: registro.val().nome
+        nome: registro.val().nome,
+        email: registro.val().email
     };
 }
 
@@ -60,10 +65,11 @@ async function buscarPorId(id) {
 // =====================================================
 // EDITAR CATEGORIA
 // =====================================================
-async function editar(id, novaCategoria) {
+async function editar(id, novoCliente) {
 
     await ref.child(id).update({
-        nome: novaCategoria.nome
+        nome: novoCliente.nome,
+        email: novoCliente.email
     });
 }
 

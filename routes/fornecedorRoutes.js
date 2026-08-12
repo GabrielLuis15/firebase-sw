@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const controller = require("../controllers/categoriaController");
+const controller = require("../controllers/fornecedorController");
 
 router.get("/", controller.listar);
 router.post("/salvar", controller.salvar);

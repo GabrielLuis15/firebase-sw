@@ -8,7 +8,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://correcaokodular-default-rtdb.firebaseio.com/"
+    databaseURL: "https://sistemaswebatividade-default-rtdb.firebaseio.com/"
 });
 
 const db = admin.database();
