@@ -1,7 +1,7 @@
 // model - banco de dados
 const db = require("../config/firebase");
 
-const ref = db.ref("clientes");
+const ref = db.database().ref("categorias");
 
 // =====================================================
 // LISTAR CATEGORIAS
